@@ -25,13 +25,13 @@ def main():
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
 
-    # Getting the URL and Extracting the content 
+    ''' Getting the URL and Extracting the content''' 
 
     url=input()
     html=urllib.request.urlopen(url,context=ctx).read()
     soup=BeautifulSoup(html,"lxml")
 
-    # Getting and displaying the User-Name and Description
+    ''' Fetching the User-Name and Description'''
 
     title=soup.title.string
     description=soup.p.string
@@ -51,7 +51,7 @@ def main():
     #print(user)
     #print(description)
 
-    # Extracting TOP TAGS and other inter-linked LINKS
+    ''' Extracting TOP TAGS and other inter-linked LINKS'''
     
     tags=soup.find("body").find("div",id="top-tags").find_all("a",limit=6)
     links=soup.find("body").find("div","user-links").find_all("a")
@@ -62,19 +62,19 @@ def main():
     # Displaying the TOP TAGS
     
     #for i in range(len(tags)):
-     #   print(tags[i])
+    #    print(tags[i])
 
-    # Getting the Repo Names from the users Github profile
+    ''' Goes through the users github profile to get the Repo Names'''
     
     for i in links:
         if "github" in i:
             gh = Github()
             name=i[19:len(i)]
             repos=[repo.name for repo in gh.get_user(name).get_repos()]
-      #      for i in repos:
-       #         print(i)
+    #        for i in repos:
+    #            print(i)
 
-    # Writing data to a json file
+    ''' Writing data to a json file'''
 
     with open("result.json","w") as f:
         json.dump(user,f)
