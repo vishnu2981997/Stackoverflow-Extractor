@@ -1,0 +1,9 @@
+In order to compile the SoE.py following packages need to be installed:
+
+1.Requests
+2.Github
+3.Urllib
+4.Json
+5.BeautifulSoup
+
+These can be installed via "pip install package_name"
