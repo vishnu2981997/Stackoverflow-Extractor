@@ -86,7 +86,7 @@ def main():
             json.dump(tags[i],f)
             f.write("\n")
         f.write("\n\n")
-        f.write("REPOS \n\n")
+        f.write("Github REPOS \n\n")
         for i in repos:
             json.dump(i,f)
             f.write("\n")
