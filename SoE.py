@@ -20,14 +20,12 @@ try:
 except:
     print("Package missing, need to install BeautifulSoup")
 
-def main():
+
+def stackoverflow(url):
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
-
-    ''' Getting the URL and Extracting the content''' 
-
-    url=input()
+    
     html=urllib.request.urlopen(url,context=ctx).read()
     soup=BeautifulSoup(html,"lxml")
 
@@ -64,6 +62,11 @@ def main():
     #for i in range(len(tags)):
     #    print(tags[i])
 
+    return user,description,tags,links
+
+
+def git_repos(links):
+    
     ''' Goes through the users github profile to get the Repo Names'''
     
     for i in links:
@@ -74,13 +77,18 @@ def main():
     #        for i in repos:
     #            print(i)
 
+    return repos
+
+
+def convert_to_json(user,description,tags,links,repos):
+    
     ''' Writing data to a json file'''
 
     with open("result.json","w") as f:
         json.dump(user,f)
         f.write("\n\n")
         json.dump(description,f)
-        f.write("\n\n")
+        f.write("\n\n\n")
         f.write("TOP TAGS \n\n")
         for i in range(len(tags)):
             json.dump(tags[i],f)
@@ -90,6 +98,16 @@ def main():
         for i in repos:
             json.dump(i,f)
             f.write("\n")
+
+            
+def main():
+
+    ''' Getting the URL and Extracting the content''' 
+
+    url=input()
+    user,description,tags,links=stackoverflow(url)
+    repos=git_repos(links)
+    convert_to_json(user,description,tags,links,repos)
             
 
 if __name__ == "__main__":
