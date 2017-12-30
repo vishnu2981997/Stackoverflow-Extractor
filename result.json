@@ -2,63 +2,67 @@
 
 "Experienced Developer with a demonstrated history of working in the facilities services industry. Skilled in Open Source Software, Python, Data Analysis, WordPress, and Internet of Things. Strong engineering professional with a Bachelor\u2019s Degree focused in Computer Science from Hindustan Institute of Technology and Science."
 
+
 TOP TAGS 
 
-"python"
-"python-3.6"
-"python-3.x"
-"django"
+[1, "python"]
+[2, "python-3.6"]
+[3, "python-3.x"]
+[4, "django"]
 
 
-REPOS 
+Github REPOS 
 
-"algorithms"
-"api-ai-facebook"
-"AshishbotV2"
-"Ashish_Assist"
-"azure_face_api"
-"canwemakeitbetter"
-"Casper-mk2"
-"chappie"
-"chutya_rating"
-"CoinFlipGui"
-"Crossword"
-"devfest-2017"
-"emote"
-"emote2emoji"
-"EngParser"
-"fashion-mnist"
-"fb-messenger-bot"
-"flask-sqlalchemy-postgres-heroku-example"
-"flask_app"
-"geograpy"
-"Ghost"
-"golgi"
-"GoogleSearchPython"
-"hotdog-not-hotdog"
-"import_resolve"
-"JavaSQL"
-"jobScraper"
-"just"
-"meetupaug27"
-"mobile_control"
-"natural_cmd"
-"notes_deleter"
-"PandaBlocker"
-"Perception"
-"pyautocorrect"
-"pyconfhyd"
-"rss_links_extractor"
-"simpleTelegramBot"
-"site"
-"slackbot"
-"slackstats"
-"smbot"
-"telegramWordGame"
-"ThinkPython"
-"torstream"
-"vango-izer"
-"watson-banking-chatbot"
-"wordbot"
-"youtube-downloader"
-"youtube_meme_base_generator"
+[1, "algorithms"]
+[2, "api-ai-facebook"]
+[3, "AshishbotV2"]
+[4, "Ashish_Assist"]
+[5, "azure_face_api"]
+[6, "canwemakeitbetter"]
+[7, "Casper-mk2"]
+[8, "challenges"]
+[9, "chappie"]
+[10, "chutya_rating"]
+[11, "CoinFlipGui"]
+[12, "Crossword"]
+[13, "devfest-2017"]
+[14, "emote"]
+[15, "emote2emoji"]
+[16, "EngParser"]
+[17, "fashion-mnist"]
+[18, "fb-messenger-bot"]
+[19, "flask-sqlalchemy-postgres-heroku-example"]
+[20, "flask_app"]
+[21, "geograpy"]
+[22, "Ghost"]
+[23, "golgi"]
+[24, "GoogleSearchPython"]
+[25, "hotdog-not-hotdog"]
+[26, "How-to-Generate-Music-Demo"]
+[27, "import_resolve"]
+[28, "JavaSQL"]
+[29, "jobScraper"]
+[30, "just"]
+[31, "meetupaug27"]
+[32, "mobile_control"]
+[33, "natural_cmd"]
+[34, "notes_deleter"]
+[35, "PandaBlocker"]
+[36, "Perception"]
+[37, "py101"]
+[38, "pyautocorrect"]
+[39, "pyconfhyd"]
+[40, "rss_links_extractor"]
+[41, "simpleTelegramBot"]
+[42, "site"]
+[43, "slackbot"]
+[44, "slackstats"]
+[45, "smbot"]
+[46, "telegramWordGame"]
+[47, "ThinkPython"]
+[48, "torstream"]
+[49, "vango-izer"]
+[50, "watson-banking-chatbot"]
+[51, "wordbot"]
+[52, "youtube-downloader"]
+[53, "youtube_meme_base_generator"]
