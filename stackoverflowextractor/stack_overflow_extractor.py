@@ -3,18 +3,11 @@ Stack_overflow_Extractor : Extracts user details based on the users stack-overfl
 """
 import ssl
 import json
-try:
-    from github import Github
-except ImportError:
-    print("Package missing, need to install github API")
-try:
-    import urllib
-except ImportError:
-    print("Package missing, need to install urllib")
-try:
-    from bs4 import BeautifulSoup
-except ImportError:
-    print("Package missing, need to install BeautifulSoup")
+import urllib
+from github import Github
+from bs4 import BeautifulSoup
+import validators
+import requests
 
 
 def stackoverflow(url):
@@ -26,10 +19,14 @@ def stackoverflow(url):
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
     try:
+        requests.get(url, timeout=1)
+    except requests.Timeout as err:
+        print(err)
+    try:
         html = urllib.request.urlopen(url, context=ctx).read()
         soup = BeautifulSoup(html, "lxml")
     except ConnectionRefusedError:
-        print("Problem opening url. Url dosent exit")
+        print("Problem opening url.")
 
     # Fetching the User-Name and Description
 
@@ -54,6 +51,7 @@ def stackoverflow(url):
                 break
 
     # Extracting TOP TAGS and other inter-linked LINKS
+
     tags = soup.find("body").find("div", id="top-tags").find_all("a", limit=6)
     links = soup.find("body").find("div", "user-links").find_all("a")
 
@@ -107,9 +105,23 @@ def main():
     :return: Null
     """
     url = input()
-    user, description, tags, links = stackoverflow(url)
-    repos = git_repos(links)
-    convert_to_json(user, description, tags, repos)
+    if urllib.request.urlopen(url).getcode():
+        pass
+    else:
+        print("boo")
+    if validators.url(url):
+        try:
+            if urllib.request.urlopen(url).getcode() == 200:
+                if "https://stackoverflow.com/users" in url:
+                    user, description, tags, links = stackoverflow(url)
+                    repos = git_repos(links)
+                    convert_to_json(user, description, tags, repos)
+                else:
+                    print("Entered url is not a stackoverflow url.")
+        except ValueError:
+            print("There is no connection to the url.")
+    else:
+        print("Url dosent exist. Invalid url.")
 
 if __name__ == "__main__":
     main()
