@@ -21,9 +21,13 @@ class Teststackoverflowextractor(unittest.TestCase):
         self.url1 = "https://stackoverflow.com/users/7690738/ashish-cherian"
         self.url2 = "https://stackoverflow.com/users/157247/t-j-crowder"
         self.user1, self.description1, self.tags1, self.links1 = s.stackoverflow(self.url1)
-        self.repos1 = s.git_repos(self.links1)
         self.user2, self.description2, self.tags2, self.links2 = s.stackoverflow(self.url2)
-        self.repos2 = s.git_repos(self.links2)
+        for i in self.links1:
+            if "github" in i:
+                self.repos1 = s.git_repos(i)
+        for i in self.links2:
+            if "github" in i:
+                self.repos2 = s.git_repos(i)
 
     def test_stackoverflow(self):
         """
@@ -82,13 +86,6 @@ class Teststackoverflowextractor(unittest.TestCase):
         self.assertNotEqual(self.user2, "")
         self.assertNotEqual(self.description2, "")
 
-    def test_git_repos(self):
-        """
-        This function is used to test git_repos.
-        :return: if test is ok or not
-        """
-        self.assertTrue("github" in self.links1[i] for i in range(len(self.links1)))
-        self.assertTrue("github" in self.links2[i] for i in range(len(self.links2)))
 
     def tearDown(self):
         """
