@@ -60,17 +60,15 @@ def stackoverflow(url):
 
     return user, description, tags, links
 
-def git_repos(links):
+def git_repos(link):
     """
     :param links: Links extracted from the url using Stackoverflow()
     :return: Github repositories of the specific user
     """
     repos = []
-    for i in links:
-        if "github" in i:
-            github = Github()
-            name = i[19:len(i)]
-            repos = [repo.name for repo in github.get_user(name).get_repos()]
+    github = Github()
+    name = link[19:len(link)]
+    repos = [repo.name for repo in github.get_user(name).get_repos()]
 
     return repos
 
@@ -105,21 +103,16 @@ def main():
     :return: Null
     """
     url = input()
-    if urllib.request.urlopen(url).getcode():
-        pass
-    else:
-        print("boo")
     if validators.url(url):
-        try:
-            if urllib.request.urlopen(url).getcode() == 200:
-                if "https://stackoverflow.com/users" in url:
-                    user, description, tags, links = stackoverflow(url)
-                    repos = git_repos(links)
-                    convert_to_json(user, description, tags, repos)
-                else:
-                    print("Entered url is not a stackoverflow url.")
-        except ValueError:
-            print("There is no connection to the url.")
+        if urllib.request.urlopen(url).getcode() == 200:
+            if "https://stackoverflow.com/users" in url:
+                user, description, tags, links = stackoverflow(url)
+                for i in links:
+                    if "github" in i:
+                        repos = git_repos(i)
+                convert_to_json(user, description, tags, repos)
+            else:
+                print("Entered url is not a stackoverflow url.")
     else:
         print("Url dosent exist. Invalid url.")
 
